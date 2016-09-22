@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- The head of the page is where the title and styles go. -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <!-- The title of the web page. Is displayed on the tab in the browser. -->
+        <title>Seinfeld</title>
+
+        <!-- Font from Google -->
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+
+        <!-- The stylesheet -->
+        <link rel="stylesheet" href="../css/seinfeld.css">
+    </head>
+
+    <!-- The body is where the content of the web page goes. -->
+    <body>
+        <!-- A 'div' is a division of the web page. You can style it with css classes. -->
+        <div class="container">
+            <div class="header">
+                <div class="image">
+                    <!-- This is the image tag. It displays an image that is stored in another directory. -->
+                    <img src="../images/seinfeld_logo.png" alt="Seinfeld Logo" />
+                </div>
+
+                <div class="title">The web page about <a href="https://www.youtube.com/watch?v=sp79Q8Scyi8" target="_blank">nothing</a>.</div>
+
+                <!-- A 'br' tag is a line break. It is like pressing enter on the keyboard. -->
+                <br>
+
+                <!-- This is an unordered list. It is used to display list items in a bulleted list. -->
+                <ul class="nav">
+                    <li class="nav-item"><a href="#about">About</a></li>
+                    <li class="nav-item"><a href="#cast">Cast</a></li>
+                    <li class="nav-item"><a href="#trivia">Trivia</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <section id="about">
+                    <!-- The h1 tag is the biggest of six headings. h1 is the largest text to h6, the smallest. -->
+                    <h1 class="section-heading">
+                        About
+                    </h1>
+
+                    <!-- A 'p' tag is a paragraph tag. It is a regular line of text that is displayed. -->
+                    <p>Seinfeld is an American sitcom that originally ran for nine seasons on NBC, from 1989 to 1998. It was created by Larry David and Jerry Seinfeld, the latter starring as a fictionalized version of himself. Set predominantly in an apartment building in Manhattan's Upper West Side in New York City (although taped entirely in Los Angeles), the show features a handful of Jerry's friends and acquaintances, particularly best friend George Costanza (Jason Alexander), former girlfriend Elaine Benes (Julia Louis-Dreyfus), and neighbor across the hall Cosmo Kramer (Michael Richards). It is often described as being "a show about nothing", as many of its episodes are about the minutiae of daily life.</p>
+
+                    <p class="section-source">
+                        <!-- An 'a' tag is an anchor tag that links to another web page.  -->
+                        Source: <a href="https://wikipedia.org/wiki/Seinfeld" target="_blank">Wikipedia</a>
+                    </p>
+                </section>
+
+                <br>
+
+                <section id="cast">
+                    <h1 class="section-heading">
+                        Cast
+                        <small>(main characters)</small>
+                    </h1>
+
+                    <div class="table-container">
+                        <!-- A table is a way to display information. -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="table-image" colspan="2">Character</th>
+                                    <th class="table-notes" colspan="1">Notes</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="table-image">
+                                        <img src="../images/cast/jerry_seinfeld.png" alt="Jerry Seinfeld" class="table-image" />
+                                    </td>
+                                    <td>Jerry Seinfeld</td>
+                                    <td>Jerry is Jerry's Jerry and a stand-up comedian.</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-image">
+                                        <img src="../images/cast/julia_louis_dreyfus.png" alt="Julia Louis-Dreyfus" class="table-image" />
+                                    </td>
+                                    <td>Elaine Benes</td>
+                                    <td>Elaine is Jerry's ex-girlfriend and later friend.</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-image">
+                                        <img src="../images/cast/michael_richards.png" alt="Cosmo Kramer" class="table-image" />
+                                    </td>
+                                    <td>Cosmo Kramer</td>
+                                    <td>Kramer is Jerry's weird and wacky neighbor.</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-image">
+                                        <img src="../images/cast/jason_alexander.png" alt="Jason Alexander" class="table-image" />
+                                    </td>
+                                    <td>George Costanza</td>
+                                    <td>George is Jerry's best friend.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <br>
+
+                <section id="trivia">
+                    <h1 class="section-heading">
+                        Trivia
+                    </h1>
+
+                    <p>Think you know the show? Try answering some of these questions:</p>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Answer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>In whose stand-up routing does Ovaltine make an appearance?</td>
+                                    <td>
+                                        <span class="answer hide">
+                                            Kenny Bania
+                                        </span>
+
+                                        <button class="btn">
+                                            Reveal Answer
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>What is Kramer's industry known as?</td>
+                                    <td>
+                                        <span class="answer hide">
+                                            Kramerica
+                                        </span>
+
+                                        <button class="btn">
+                                            Reveal Answer
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>What flavor muffin-top did Elaine order?</td>
+                                    <td>
+                                        <span class="answer hide">
+                                            Peach
+                                        </span>
+
+                                        <button class="btn">
+                                            Reveal Answer
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>What fake name does George use in times of need?</td>
+                                    <td>
+                                        <span class="answer hide">
+                                            Art Vandelay
+                                        </span>
+
+                                        <button class="btn">
+                                            Reveal Answer
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>What does Jerry's license plate read?</td>
+                                    <td>
+                                        <span class="answer hide">
+                                            JVN 728
+                                        </span>
+
+                                        <button class="btn">
+                                            Reveal Answer
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>That last one was tricky. Sorry about that.</p>
+                </section>
+
+                <hr>
+                <br>
+
+                <div class="footer">
+                    <div class="trademark-notice">
+                        <p>Seinfeld is a trademark of NBC or TBS or Hulu or something. I do not own any of the images or information found on this website.</p>
+                        <p>If you so dare steal what I've made, however, you will pay more than Jerry Seinfeld's estimated earnings for each re-run episode that is shown on any television channel. Think about it. That's a lot of dough.</p>
+                        <p>Jerry Seinfeld is filthy rich.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/seinfeld.js"></script>
+    </body>
+</html>
