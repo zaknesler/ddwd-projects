@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>Wunderground API</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="columns">
+            <!-- A stationary radar image of Drums, PA. (no additional parameters required). -->
+            <div class="column">
+                <div class="title">
+                    A
+                </div>
+
+                <img src="http://api.wunderground.com/api/7787bf91089d35a6/radar/q/PA/Drums.png?newmaps=1" alt="Animated Radar" />
+            </div>
+
+            <!-- A stationary radar image of Orlando, FL (in png format with a 300 mi radius). -->
+            <div class="column">
+                <div class="title">
+                    B
+                </div>
+
+                <img src="http://api.wunderground.com/api/7787bf91089d35a6/radar/q/FL/Orlando.png?width=500&height=500&newmaps=1&radius=300" alt="Animated Radar" />
+            </div>
+
+            <!-- An animated radar image of Hazleton, PA (in gif format with 400x400 image dimensions and a 250 mi radius). -->
+            <div class="column">
+                <div class="title">
+                    C
+                </div>
+
+                <img src="http://api.wunderground.com/api/7787bf91089d35a6/animatedradar/q/PA/Hazleton.gif?width=400&height=400&newmaps=1&radius=250" alt="Animated Radar" />
+            </div>
+
+            <!-- An animated radar image of Hazleton, PA (in swf format with 400x400 image dimensions and a 250 mi radius WITH 12 frames in the animation). -->
+            <div class="column">
+                <div class="title">
+                    D
+                </div>
+
+                <img src="http://api.wunderground.com/api/7787bf91089d35a6/animatedradar/q/PA/Hazleton.gif?width=400&height=400&newmaps=1&radius=250&num=12" alt="Animted Radar" />
+            </div>
+
+            <!-- An animated combined radar/satellite image of Philadelphia, PA (in gif format) with 300x300 image dimensions and a 300 mi radius. -->
+            <div class="column">
+                <div class="title">
+                    E
+                </div>
+
+                <img src="http://api.wunderground.com/api/7787bf91089d35a6/radar/satellite/q/PA/Philadelphia.gif?width=300&height=300&newmaps=1&radius=300" alt="Animted Radar" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
