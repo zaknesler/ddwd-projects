@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <title>Dynamic API</title>
+
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="header_title">
+                    JavaScript Demo
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <div class="section">
+                    <div class="section_top">
+                        <div class="section_heading">
+                            <div class="section_number">
+                                1
+                            </div>
+
+                            <div class="section_title">
+                                Getting user's name
+                            </div>
+                        </div>
+
+                        <div class="section_button">
+                            <button onclick="getName()" class="button">Try it</button>
+                        </div>
+                    </div>
+
+                    <div class="section_response">
+                        <div id="name-output"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section_top">
+                        <div class="section_heading">
+                            <div class="section_number">
+                                2
+                            </div>
+
+                            <div class="section_title">
+                                Getting user's location
+                            </div>
+                        </div>
+
+                        <div class="section_button">
+                            <button onclick="getLocation()" class="button">Give it a go</button>
+                        </div>
+                    </div>
+
+                    <div class="section_response">
+                        <div id="location-output"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section_top">
+                        <div class="section_heading">
+                            <div class="section_number">
+                                3
+                            </div>
+
+                            <div class="section_title">
+                                Getting user's city and state
+                            </div>
+                        </div>
+
+                        <div class="section_button">
+                            <button onclick="getCityAndState()" class="button">Take a shot</button>
+                        </div>
+                    </div>
+
+                    <div class="section_response">
+                        <div id="citystate-output"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section_top">
+                        <div class="section_heading">
+                            <div class="section_number">
+                                4
+                            </div>
+
+                            <div class="section_title">
+                                Generating a Wunderground API url
+                            </div>
+                        </div>
+
+                        <div class="section_button">
+                            <button onclick="wundergroundRadar()" class="button">Almost there</button>
+                        </div>
+                    </div>
+
+                    <div class="section_response">
+                        <div id="wunderground-radar-output"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section_top">
+                        <div class="section_heading">
+                            <div class="section_number">
+                                5
+                            </div>
+
+                            <div class="section_title">
+                                Reading weather conditions from city and state
+                            </div>
+                        </div>
+
+                        <div class="section_button">
+                            <button onclick="wundergroundConditions()" class="button">Oh yeah, boi</button>
+                        </div>
+                    </div>
+
+                    <div class="section_response">
+                        <div id="wunderground-conditions-output"></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section_top">
+                        <div class="section_heading">
+                            <div class="section_number">
+                                6
+                            </div>
+
+                            <div class="section_title">
+                                Getting the forecast for the next ten days
+                            </div>
+                        </div>
+
+                        <div class="section_button">
+                            <button onclick="wundergroundForecast()" class="button">Gimme the goods</button>
+                        </div>
+                    </div>
+
+                    <div class="section_response">
+                        <div id="wunderground-forecast-output" style="display: none;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Conditions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Include the JavaScript file along with jQuery. -->
+        <!-- It is placed at the bottom of the page because JavaScript runs when the document loads. It is more efficient to place it at the end of the page. This way, the html loads before the javascript. -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="../js/script.js"></script>
+    </body>
+</html>

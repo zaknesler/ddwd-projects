@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <title>Dynamic API</title>
+
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <div id="app">
+            <div class="header">
+                <div class="container">
+                    <div class="header_title">
+                        Vue Demo
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="container">
+                    <div class="section">
+                        <div class="section_top">
+                            <div class="section_heading">
+                                <div class="section_number">
+                                    1
+                                </div>
+
+                                <div class="section_title">
+                                    Getting user's name
+                                </div>
+                            </div>
+
+                            <div class="section_button">
+                                <button v-on:click="getName()" class="button">Try it</button>
+                            </div>
+                        </div>
+
+                        <div class="section_response" v-if="name.length">
+                            Hello, {{ name }}! How are you doing today?
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section_top">
+                            <div class="section_heading">
+                                <div class="section_number">
+                                    2
+                                </div>
+
+                                <div class="section_title">
+                                    Getting user's location
+                                </div>
+                            </div>
+
+                            <div class="section_button">
+                                <button v-on:click="getLocation()" class="button">Give it a go</button>
+                            </div>
+                        </div>
+
+                        <div class="section_response" v-if="location.length">
+                            I hear that {{ location }} is pretty cool.
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section_top">
+                            <div class="section_heading">
+                                <div class="section_number">
+                                    3
+                                </div>
+
+                                <div class="section_title">
+                                    Getting user's city and state
+                                </div>
+                            </div>
+
+                            <div class="section_button">
+                                <button v-on:click="getCityAndState()" class="button">Take a shot</button>
+                            </div>
+                        </div>
+
+                        <div class="section_response" v-if="city_state.city.length && city_state.state.length">
+                            You live in {{ city_state.city }}, {{ city_state.state }}. How is it there?
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section_top">
+                            <div class="section_heading">
+                                <div class="section_number">
+                                    4
+                                </div>
+
+                                <div class="section_title">
+                                    Generating a Wunderground API url
+                                </div>
+                            </div>
+
+                            <div class="section_button">
+                                <button v-on:click="getWundergroundRadarUrl()" class="button">Almost there</button>
+                            </div>
+                        </div>
+
+                        <div class="section_response" v-if="wunderground_url.url.length">
+                            <a :href="wunderground_url.url">Click here</a> for your Wunderground radar.
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section_top">
+                            <div class="section_heading">
+                                <div class="section_number">
+                                    5
+                                </div>
+
+                                <div class="section_title">
+                                    Reading weather conditions from city and state
+                                </div>
+                            </div>
+
+                            <div class="section_button">
+                                <button v-on:click="getWundergroundConditions()" class="button">Oh yeah, boi</button>
+                            </div>
+                        </div>
+
+                        <div class="section_response" v-if="wunderground_conditions.conditions.temperature.length && wunderground_conditions.conditions.weather.length">
+                            It is {{ wunderground_conditions.conditions.temperature }} and {{ wunderground_conditions.conditions.weather }} in {{ wunderground_conditions.city }}, {{ wunderground_conditions.state }}.
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section_top">
+                            <div class="section_heading">
+                                <div class="section_number">
+                                    6
+                                </div>
+
+                                <div class="section_title">
+                                    Getting the forecast for the next ten days
+                                </div>
+                            </div>
+
+                            <div class="section_button">
+                                <button v-on:click="getWundergroundForecast()" class="button">Gimme the goods</button>
+                            </div>
+                        </div>
+
+                        <div class="section_response" v-if="wunderground_forecast.forecast.length">
+                            <p>
+                                Here is the forecast for the next ten days in {{ wunderground_forecast.city }}, {{ wunderground_forecast.state }}:
+                            </p>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Condition</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="item in wunderground_forecast.forecast">
+                                        <td>{{ item.date.monthname }} {{ item.date.day }}</td>
+                                        <td>{{ item.conditions }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../js/vue.js"></script>
+        <script src="../js/vue-resource.min.js"></script>
+        <script>
+            new Vue({
+                el: '#app',
+
+                data: {
+                    name: '',
+
+                    location: '',
+
+                    city_state: {
+                        city: '',
+                        state: ''
+                    },
+
+                    wunderground_url: {
+                        city: '',
+                        state: '',
+                        url: ''
+                    },
+
+                    wunderground_conditions: {
+                        city: '',
+                        state: '',
+                        conditions: {
+                            temperature: '',
+                            weather: ''
+                        }
+                    },
+
+                    wunderground_forecast: {
+                        city: '',
+                        state: '',
+                        forecast: []
+                    }
+                },
+
+                methods: {
+                    getName: function () {
+                        var name = prompt('What is your name?', 'Zak Nesler');
+
+                        if (!(name.length > 0)) {
+                            return;
+                        }
+
+                        this.name = name;
+                    },
+
+                    getLocation: function () {
+                        var location = prompt('What is your location?', 'Hazleton, Pennsylvania');
+
+                        if (!(location.length > 0)) {
+                            return;
+                        }
+
+                        this.location = location;
+                    },
+
+                    getCityAndState: function () {
+                        this.city_state
+                            .city = prompt('What is your city?', 'Hazleton');
+
+                        this.city_state
+                            .state = prompt('What is your state?', 'Pennsylvania');
+                    },
+
+                    getWundergroundRadarUrl: function () {
+                        var city = prompt('What is your city?', 'Hazleton');
+
+                        var state = prompt('What is your state?', 'Pennsylvania');
+
+                        if (!(city.length > 0 )|| !(state.length > 0)) {
+                            return;
+                        }
+
+                        this.wunderground_url.city = city;
+
+                        this.wunderground_url.state = state;
+
+                        this.wunderground_url
+                            .url = 'http://api.wunderground.com/api/7787bf91089d35a6/animatedradar/q/' + this.wunderground_url.state + '/' + this.wunderground_url.city + '.swf?width=500&height=500&newmaps=1&radius=400';
+                    },
+
+                    getWundergroundConditions: function () {
+                        var city = prompt('What is your city?', 'Hazleton');
+
+                        var state = prompt('What is your state?', 'Pennsylvania');
+
+                        if (!(city.length > 0 )|| !(state.length > 0)) {
+                            return;
+                        }
+
+                        this.$http
+                            .get('http://api.wunderground.com/api/7787bf91089d35a6/conditions/q/' + state + '/' + city + '.json')
+                            .then((response) => {
+                                response = response.data.current_observation;
+
+                                this.wunderground_conditions.city = city;
+
+                                this.wunderground_conditions.state = state;
+
+                                this.wunderground_conditions
+                                    .conditions
+                                    .temperature = Math.floor(response.temp_f) + '°F';
+
+                                this.wunderground_conditions
+                                    .conditions
+                                    .weather = response.weather.toLowerCase();
+                            });
+                    },
+
+                    getWundergroundForecast: function () {
+                        var city = prompt('What is your city?', 'Hazleton');
+
+                        var state = prompt('What is your state?', 'Pennsylvania');
+
+                        if (!(city.length > 0 )|| !(state.length > 0)) {
+                            return;
+                        }
+
+                        this.$http
+                            .get('http://api.wunderground.com/api/7787bf91089d35a6/forecast10day/q/' + state + '/' + city + '.json')
+                            .then((response) => {
+                                response = response.data.forecast.simpleforecast.forecastday;
+
+                                this.wunderground_forecast.city = city;
+
+                                this.wunderground_forecast.state = state;
+
+                                this.wunderground_forecast
+                                    .forecast = response;
+                            });
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

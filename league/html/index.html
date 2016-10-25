@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+    <div id="app" class="container">
+        <button class="button" v-on:click="generate()">Generate</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Champion</th>
+                    <th>Role</th>
+                    <th>Items</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ output.champion }}</td>
+                    <td>{{ output.role }}</td>
+                    <td>
+                        <ul>
+                            <li v-for="item in output.items">{{ item }}</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../js/vue.min.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>
