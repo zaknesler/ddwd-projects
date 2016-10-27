@@ -1,7 +1,8 @@
 // Vue is a "progressive" JavaScript framework.
 // It makes JavaScript extremely pleasing to work with.
 //
-// It uses a process known as "data binding" which is defined as a "connection between the UI and the logic behind it."
+// It uses a process known as "data binding" which is defined as a
+// "connection between the UI and the logic behind it."
 //
 // vuejs.org (Check it out, you might like it.)
 
@@ -34,7 +35,7 @@ new Vue({
                     this.deck.cards = []; // Reset the user's cards.
 
                     this.deck.id = response.body.deck_id; // Set the deck id to the id returned by the API.
-                    this.deck.remaining = response.body.remaining; // Set the remaining amount of cards (always 52).
+                    this.deck.remaining = response.body.remaining; // Set the remaining amount of cards.
                 });
         },
 
@@ -44,9 +45,14 @@ new Vue({
                 this.getDeck();
             }
 
-            // A check to ensure that the amount requested to draw is available.
+            // If the amount given is greater than the amount remaining, set it to the remaining value.
             if (amount > this.deck.remaining) {
                 amount = this.deck.remaining;
+            }
+
+            // If the amount is negative, just return. Don't try to pull a negative amount of cards.
+            if (amount <= 0) {
+                return;
             }
 
             // Send a GET request to draw a specified amount of cards.
@@ -62,6 +68,22 @@ new Vue({
 
                     this.deck.remaining = response.body.remaining; // Update the remaining amount of cards.
                 });
+        },
+
+        // The API returns text that is uppercase. This method makes the first capital and the rest lowercase.
+        // Taken from a Stack Overflow answer.
+        prettyString: function (str) {
+            return str.replace(/\w\S*/g, function (text) {
+                return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
+            });
+        },
+
+        pluralCards: function (amount) {
+            if (amount == 1) {
+                return amount + ' card';
+            }
+
+            return amount + ' cards';
         }
     }
 });

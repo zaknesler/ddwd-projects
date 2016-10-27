@@ -26,19 +26,25 @@
             <div class="container">
                 <!-- Below is the element that Vue is bound to. -->
                 <div id="app">
-                    <div v-if="deck.remaining" class="form">
+                    <form action="#" v-if="deck.remaining" class="form" v-on:submit.prevent="draw(drawAmount)">
                         <div class="form-group">
-                            <label class="form-label">
-                                How many cards would you like to draw? ({{ deck.remaining }} remaining)
+                            <label class="form-label flex-me">
+                                <span class="question">
+                                    How many cards would you like to draw?
+                                </span>
+
+                                <span class="remaining text-light">
+                                    {{ pluralCards(deck.remaining) }} remaining
+                                </span>
                             </label>
 
                             <div class="form-together">
-                                <input type="number" :max="deck.remaining" min="1" v-model="drawAmount" class="form-input" />
+                                <input type="number" :max="deck.remaining" min="1" v-model="drawAmount" class="form-input" autofocus="autofocus" />
 
-                                <button v-on:click="draw(drawAmount)" class="button">Draw</button>
+                                <button class="button">Draw</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
 
                     <p v-if="!deck.remaining">
                         Uh oh! You ran out of cards. Why don't you <a href="#" v-on:click.prevent="getDeck">get a new deck</a>?
@@ -49,7 +55,7 @@
                         <!-- Display each card in the cards array as a new list item. -->
                         <li v-for="card in deck.cards" class="list-group-item">
                             <span class="card-info">
-                                {{ card.value }} of {{ card.suit }}
+                                {{ prettyString(card.value) }} of {{ prettyString(card.suit) }}
                             </span>
 
                             <span class="card-image text-light">
@@ -58,7 +64,7 @@
                         </li>
                     </ul>
 
-                    <p v-if="deck.cards.length == 0" class="text-light">
+                    <p v-else class="text-light">
                         No cards to display! Why don't you draw a few?
                     </p>
                 </div>
