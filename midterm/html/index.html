@@ -6,27 +6,66 @@
 
         <title>Midterm</title>
 
+        <!-- Stylesheet -->
         <link rel="stylesheet" href="../css/style.css" />
     </head>
     <body>
-        <div id="app" class="container">
-            <label>How many cards to generate? (1 to 52)</label>
-            <input type="number" name="number" max="52" min="1" value="1" placeholder="1-52" />
+        <div class="header">
+            <div class="container">
+                <div class="title">
+                    Midterm
+                </div>
 
-            <p v-if="deck.id">
-                Deck has been generated! ({{ deck.remaining }} remaining)
-            </p>
-
-            <button v-if="deck.id" v-on:click="getDeck">Regenerate Deck</button>
-            <button v-if="deck.id" v-on:click="draw(1)">Draw a card</button>
-
-            <ul v-if="deck.cards.length > 0">
-                <li v-for="card in deck.cards">
-                    {{ card.value }} of {{ card.suit }}
-                </li>
-            </ul>
+                <div class="sub-title">
+                    Using Vue 2.0 and the <a href="#">Deck of Cards API</a>
+                </div>
+            </div>
         </div>
 
+        <div class="content">
+            <div class="container">
+                <!-- Below is the element that Vue is bound to. -->
+                <div id="app">
+                    <div v-if="deck.remaining" class="form">
+                        <div class="form-group">
+                            <label class="form-label">
+                                How many cards would you like to draw? ({{ deck.remaining }} remaining)
+                            </label>
+
+                            <div class="form-together">
+                                <input type="number" :max="deck.remaining" min="1" v-model="drawAmount" class="form-input" />
+
+                                <button v-on:click="draw(drawAmount)" class="button">Draw</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p v-if="!deck.remaining">
+                        Uh oh! You ran out of cards. Why don't you <a href="#" v-on:click.prevent="getDeck">get a new deck</a>?
+                    </p>
+
+                    <!-- If there are cards to display, output a list of cards. -->
+                    <ul v-if="deck.cards.length > 0" class="list-group">
+                        <!-- Display each card in the cards array as a new list item. -->
+                        <li v-for="card in deck.cards" class="list-group-item">
+                            <span class="card-info">
+                                {{ card.value }} of {{ card.suit }}
+                            </span>
+
+                            <span class="card-image text-light">
+                                <img :src="card.image" alt="Card image" />
+                            </span>
+                        </li>
+                    </ul>
+
+                    <p v-if="deck.cards.length == 0" class="text-light">
+                        No cards to display! Why don't you draw a few?
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
         <script src="../js/vue.js"></script>
         <script src="../js/vue-resource.min.js"></script>
         <script src="../js/script.js"></script>
