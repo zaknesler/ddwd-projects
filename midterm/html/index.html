@@ -1,9 +1,12 @@
+<!-- I chose a Deck of Cards API because I thought it would be a pretty cool way to interact with an API. -->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
+        <!-- Sets the title of the webpage. This is displayed in the tab of the browser. -->
         <title>Midterm</title>
 
         <!-- Stylesheet -->
@@ -26,7 +29,10 @@
             <div class="container">
                 <!-- Below is the element that Vue is bound to. -->
                 <div id="app">
-                    <form action="#" v-if="deck.remaining" class="form" v-on:submit.prevent="draw(drawAmount)">
+                    <!-- The form for the user to specify the amount of cards to draw. -->
+                    <!-- The v-show ensures that is is only displaying if there are cards remaining. -->
+                    <!-- The v-on:submit.prevent is called when the form is submitted. It calls the draw method. -->
+                    <form action="#" v-show="deck.remaining" class="form" v-on:submit.prevent="draw(drawAmount)">
                         <div class="form-group">
                             <label class="form-label flex-me">
                                 <span class="question">
@@ -34,11 +40,16 @@
                                 </span>
 
                                 <span class="remaining text-light">
+                                    <!-- Output the amount of cards remaining. -->
+                                    <!-- This uses a 'pluralCards' method for grammar. -->
                                     {{ pluralCards(deck.remaining) }} remaining
                                 </span>
                             </label>
 
                             <div class="form-together">
+                                <!-- The input that the user may use to specify the amount of cards to draw. -->
+                                <!-- The :max is automatically set to the remaining amount of cards in the deck. -->
+                                <!-- The v-model links this input to the drawAmount data value. -->
                                 <input type="number" :max="deck.remaining" min="1" v-model="drawAmount" class="form-input" autofocus="autofocus" />
 
                                 <button class="button">Draw</button>
@@ -46,34 +57,45 @@
                         </div>
                     </form>
 
-                    <p v-if="!deck.remaining">
+                    <!-- This message is only displayed when there are no cards remaining. -->
+                    <p v-show="!deck.remaining">
                         Uh oh! You ran out of cards. Why don't you <a href="#" v-on:click.prevent="getDeck">get a new deck</a>?
                     </p>
 
                     <!-- If there are cards to display, output a list of cards. -->
-                    <ul v-if="deck.cards.length > 0" class="list-group">
+                    <!-- The v-show ensures that the ul is only displaying when there are cards to display. -->
+                    <ul v-show="deck.cards.length > 0" class="list-group">
                         <!-- Display each card in the cards array as a new list item. -->
                         <li v-for="card in deck.cards" class="list-group-item">
                             <span class="card-info">
+                                <!-- This outputs the value and the suit of the card. -->
+                                <!-- Each are passed through the 'prettyString' method to format the string properly. -->
                                 {{ prettyString(card.value) }} of {{ prettyString(card.suit) }}
                             </span>
 
                             <span class="card-image text-light">
+                                <!-- This is the image of the card. -->
+                                <!-- The :img is bound to the image of the card. -->
                                 <img :src="card.image" alt="Card image" />
                             </span>
                         </li>
                     </ul>
 
-                    <p v-else class="text-light">
+                    <!-- This is only displayed when there are no cards to display. -->
+                    <p v-hide="deck.cards.length > 0" class="text-light">
                         No cards to display! Why don't you draw a few?
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- JavaScript -->
+        <!-- Vue: base framework. -->
         <script src="../js/vue.js"></script>
+
+        <!-- Vue Resource: Allows for http requests. -->
         <script src="../js/vue-resource.min.js"></script>
+
+        <!-- Script -->
         <script src="../js/script.js"></script>
     </body>
 </html>

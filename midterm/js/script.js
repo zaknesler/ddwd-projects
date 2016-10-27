@@ -78,6 +78,9 @@ new Vue({
             });
         },
 
+        // This method ensures that things make sense grammatically.
+        // If the amount is one, it will return '1 card'.
+        // Otherwise, it will return 'n cards'.
         pluralCards: function (amount) {
             if (amount == 1) {
                 return amount + ' card';
