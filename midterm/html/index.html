@@ -1,4 +1,4 @@
-<!-- I chose a Deck of Cards API because I thought it would be a pretty cool way to interact with an API. -->
+<!-- I chose the Deck of Cards API because I thought it would be a pretty cool way to interact with an API. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@
         <div class="content">
             <div class="container">
                 <!-- Below is the element that Vue is bound to. -->
-                <div id="app">
+                <div id="app" v-cloak>
                     <!-- The form for the user to specify the amount of cards to draw. -->
                     <!-- The v-show ensures that is is only displaying if there are cards remaining. -->
                     <!-- The v-on:submit.prevent is called when the form is submitted. It calls the draw method. -->
@@ -82,7 +82,7 @@
                     </ul>
 
                     <!-- This is only displayed when there are no cards to display. -->
-                    <p v-hide="deck.cards.length > 0" class="text-light">
+                    <p v-show="!deck.cards.length > 0" class="text-light">
                         No cards to display! Why don't you draw a few?
                     </p>
                 </div>

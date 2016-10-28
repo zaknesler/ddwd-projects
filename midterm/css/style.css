@@ -14,6 +14,10 @@
     background-color: rgba(0, 0, 0, 0.15);
 }
 
+[v-cloak] {
+    display: none;
+}
+
 html, body {
     height: 100%;
     width: 100%;

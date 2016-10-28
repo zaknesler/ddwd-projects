@@ -13,7 +13,7 @@ new Vue({
     data: { // Set the data for the Vue instance.
         deck: { // The deck object.
             id: '', // The id of the deck. Used for API interaction.
-            remaining: 1, // Amount of cards remaining in the deck.
+            remaining: 52, // Amount of cards remaining in the deck.
             cards: [] // The array of cards that the user has drawn.
         },
 
