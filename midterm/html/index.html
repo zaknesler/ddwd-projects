@@ -39,10 +39,14 @@
                                     How many cards would you like to draw?
                                 </span>
 
-                                <span class="remaining text-light">
+                                <span v-show="!loading && deck.remaining" class="remaining text-light">
                                     <!-- Output the amount of cards remaining. -->
                                     <!-- This uses a 'pluralCards' method for grammar. -->
                                     {{ pluralCards(deck.remaining) }} remaining
+                                </span>
+
+                                <span v-show="loading" class="remaining text-light">
+                                    Loading...
                                 </span>
                             </label>
 

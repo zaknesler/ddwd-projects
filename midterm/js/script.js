@@ -17,7 +17,9 @@ new Vue({
             cards: [] // The array of cards that the user has drawn.
         },
 
-        drawAmount: 13 // The value of the input that asks the user how many cards to draw.
+        drawAmount: 13, // The value of the input that asks the user how many cards to draw.
+
+        loading: false // Whether to show the "loading" text.
     },
 
     // When the page has been loaded completely. Similar to jQuery's 'ready' method.
@@ -27,6 +29,8 @@ new Vue({
 
     methods: {
         getDeck: function () {
+            this.loading = true;
+
             // Send a GET request to the api url to get a new shuffled deck.
             this.$http
                 .get('https://deckofcardsapi.com/api/deck/new/shuffle/')
@@ -36,10 +40,14 @@ new Vue({
 
                     this.deck.id = response.body.deck_id; // Set the deck id to the id returned by the API.
                     this.deck.remaining = response.body.remaining; // Set the remaining amount of cards.
+
+                    this.loading = false;
                 });
         },
 
         draw: function (amount) {
+            this.loading = true;
+
             // A check to ensure that there is a deck generated.
             if (!this.deck.id) {
                 this.getDeck();
@@ -67,6 +75,8 @@ new Vue({
                     }
 
                     this.deck.remaining = response.body.remaining; // Update the remaining amount of cards.
+
+                    this.loading = false;
                 });
         },
 
