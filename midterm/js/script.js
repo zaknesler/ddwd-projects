@@ -8,9 +8,9 @@
 
 // Instantiate a new Vue instance.
 new Vue({
-    el: '#app', // Bind the instance to the element with an id of 'app'
+    el: '#app', // Bind the instance to the element with an id of 'app'.
 
-    data: { // Set the data for the Vue instance.
+    data: { // Set the data for the Vue instance. It is attached to the DOM, so it is called with 'this'.
         deck: { // The deck object.
             id: '', // The id of the deck. Used for API interaction.
             remaining: 52, // Amount of cards remaining in the deck.
@@ -29,7 +29,7 @@ new Vue({
 
     methods: {
         getDeck: function () {
-            this.loading = true;
+            this.loading = true;  // Show the loading message.
 
             // Send a GET request to the api url to get a new shuffled deck.
             this.$http
@@ -41,12 +41,12 @@ new Vue({
                     this.deck.id = response.body.deck_id; // Set the deck id to the id returned by the API.
                     this.deck.remaining = response.body.remaining; // Set the remaining amount of cards.
 
-                    this.loading = false;
+                    this.loading = false; // Hide the loading message.
                 });
         },
 
         draw: function (amount) {
-            this.loading = true;
+            this.loading = true; // Show the loading message.
 
             // A check to ensure that there is a deck generated.
             if (!this.deck.id) {
@@ -76,7 +76,7 @@ new Vue({
 
                     this.deck.remaining = response.body.remaining; // Update the remaining amount of cards.
 
-                    this.loading = false;
+                    this.loading = false; // Hide the loading message.
                 });
         },
 

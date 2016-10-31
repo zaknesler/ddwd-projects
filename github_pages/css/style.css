@@ -25,4 +25,54 @@ ul {
 
 .container {
     padding: 20px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+.form-group,
+.form-label,
+.form-input {
+    display: block;
+}
+
+.form-group:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    margin-bottom: 10px;
+}
+
+.form-input {
+    background-color: #fff;
+    color: #2d3142;
+    border: 1px solid #bfc0c0;
+    border-radius: 3px;
+    padding: 15px;
+    width: 100%;
+    font-size: 20px;
+}
+
+.form-input:focus {
+    outline: 0;
+    border: 1px solid #333;
+}
+
+.button {
+    background-color: #ef8354;
+    color: #fff;
+    border: 1px solid #cc7048;
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.button:focus {
+    outline: 0;
+    border-color: #995436;
 }
