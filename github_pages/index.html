@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <title>GitHub API</title>
+
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div id="app" class="container" v-cloak>
+            <div v-show="error" class="error">
+                {{ error }}
+            </div>
+
+            <form action="#" v-on:submit.prevent="getRepositoryContents(form.username, form.repository, form.path)">
+                <div class="form-group">
+                    <label class="form-label">
+                        Username
+                    </label>
+
+                    <input type="text" v-model="form.username" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        Repository
+                    </label>
+
+                    <input type="text" v-model="form.repository" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        Path
+                    </label>
+
+                    <input type="text" v-model="form.path" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                    <button>Get Repository Contents</button>
+                </div>
+            </form>
+
+            <ul v-show="repositoryContents" v-for="item in repositoryContents">
+                <li>
+                    <a :href="getPagesUrl(item)">
+                        {{ item.name }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-resource.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
