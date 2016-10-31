@@ -2,7 +2,7 @@ new Vue({
     el: '#app',
 
     data: {
-        'token': '0a82465658b82ee54f4f9ca6a7ae002b74a54040', // GitHub personal access token
+        'token': '2c24a4d756a98ccf78dd0c52dc23f83b07e340a3', // GitHub personal access token
 
         'form': {
             username: 'colingreybosh',
