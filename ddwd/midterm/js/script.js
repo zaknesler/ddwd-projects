@@ -33,7 +33,7 @@ new Vue({
 
             // Send a GET request to the api url to get a new shuffled deck.
             this.$http
-                .get('https://deckofcardsapi.com/api/deck/new/shuffle/')
+                .get('http://deckofcardsapi.com/api/deck/new/shuffle/')
                 .then((response) => {
                     this.deck.id = ''; // Reset the deck id.
                     this.deck.cards = []; // Reset the user's cards.
@@ -65,7 +65,7 @@ new Vue({
 
             // Send a GET request to draw a specified amount of cards.
             this.$http
-                .get('https://deckofcardsapi.com/api/deck/' + this.deck.id + '/draw/?count=' + amount)
+                .get('http://deckofcardsapi.com/api/deck/' + this.deck.id + '/draw/?count=' + amount)
                 .then((response) => {
                     var cards = response.body.cards;
 
