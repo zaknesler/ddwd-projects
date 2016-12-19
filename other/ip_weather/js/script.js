@@ -16,7 +16,7 @@ new Vue({
     methods: {
         getLocation: function () {
             this.$http
-                .get('http://ip-api.com/json/')
+                .get('https://ip-api.com/json/')
                 .then((response) => {
                     this.getConditions(response.data.region, response.data.city);
 
@@ -30,7 +30,7 @@ new Vue({
             }
 
             this.$http
-                .get('http://api.wunderground.com/api/7787bf91089d35a6/conditions/q/' + region + '/' + city + '.json')
+                .get('https://api.wunderground.com/api/7787bf91089d35a6/conditions/q/' + region + '/' + city + '.json')
                 .then((response) => {
                     this.conditions = response.data.current_observation;
                 });
