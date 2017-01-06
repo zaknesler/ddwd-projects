@@ -5,7 +5,7 @@ new Vue({
         'token': 'a85c4d9de516b158ad21947' + 'd6304535117cd7d3f', // GitHub personal access token
 
         'form': {
-            username: 'colingreybosh',
+            username: 'zaknes',
             repository: 'projects',
             path: 'html' // The path that the directories are under.
         },
