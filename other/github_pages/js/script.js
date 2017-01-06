@@ -7,7 +7,7 @@ new Vue({
         'form': {
             username: 'zaknes',
             repository: 'projects',
-            path: 'html' // The path that the directories are under.
+            path: 'ddwd' // The path that the directories are under.
         },
 
         'repositoryContents': {}, // The response is stored here.
